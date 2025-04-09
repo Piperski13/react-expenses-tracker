@@ -1,7 +1,8 @@
 import Expenses from "./components/Expenses/Expenses.js";
 import NewExpenses from "./components/NewExpenses/NewExpenses.js";
+import React, { useState } from "react";
 
-const expenses = [
+let expenses = [
   {
     id: "e1",
     title: "Toilet Paper",
@@ -24,10 +25,20 @@ const expenses = [
 ];
 
 const App = () => {
+  const [expensesStatic, setExpensesStatic] = useState(expenses);
+
+  const setExpenseDataHandler = (newExpense) => {
+    setExpensesStatic((prevExpenses) => {
+      const updatedExpenses = [newExpense, ...prevExpenses];
+      console.log("Updated:", updatedExpenses);
+      return updatedExpenses;
+    });
+  };
+
   return (
     <div>
-      <NewExpenses />
-      <Expenses items={expenses}></Expenses>
+      <NewExpenses expenseDataPassed={setExpenseDataHandler} />
+      <Expenses items={expensesStatic}></Expenses>
     </div>
   );
 };
