@@ -31,7 +31,6 @@ const App = () => {
 
     setExpensesStatic((prevExpenses) => {
       const updatedExpenses = [newExpense, ...prevExpenses];
-      console.log("Updated:", updatedExpenses);
 
       return updatedExpenses;
     });
