@@ -28,11 +28,14 @@ const App = () => {
   const [expensesStatic, setExpensesStatic] = useState(expenses);
 
   const setExpenseDataHandler = (newExpense) => {
+
     setExpensesStatic((prevExpenses) => {
       const updatedExpenses = [newExpense, ...prevExpenses];
       console.log("Updated:", updatedExpenses);
+
       return updatedExpenses;
     });
+
   };
 
   return (
